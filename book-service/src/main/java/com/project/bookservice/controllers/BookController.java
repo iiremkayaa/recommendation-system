@@ -1,5 +1,7 @@
 package com.project.bookservice.controllers;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,10 +16,10 @@ import com.project.bookservice.services.BookService;
 @RestController
 public class BookController {
 	@GetMapping("/books")
-	public ResponseEntity<BookList> getBookList(){ 
-		BookList bookList=new BookList();
-		bookList.setBooks(BookService.getBookList());
-	    return ResponseEntity.ok(bookList);    
+	public ResponseEntity<List<Book>> getBookList(){ 
+		/*BookList bookList=new BookList();
+		bookList.setBooks(BookService.getBookList());*/
+	    return ResponseEntity.ok(BookService.getBookList());    
 	}
 	@RequestMapping("/books/{id}")
 	public Book getBookById(@PathVariable("id") String id) {

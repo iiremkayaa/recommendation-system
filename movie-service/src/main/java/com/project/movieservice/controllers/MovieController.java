@@ -1,6 +1,8 @@
 package com.project.movieservice.controllers;
 
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +18,7 @@ public class MovieController {
 	public ResponseEntity<MovieList> getMovieList(){ 
 		 MovieList movieList=new MovieList();
 		 movieList.setMovies(MovieService.getMovieList());
-	     return ResponseEntity.ok(movieList);    
+	     return ResponseEntity.ok(movieList/*MovieService.getMovieList()*/);    
 	}
 	@RequestMapping("/movies/{id}")
 	public Movie getMovieById(@PathVariable("id") String id) {

@@ -16,14 +16,14 @@ import com.project.bookservice.services.BookService;
 @RestController
 public class BookController {
 	@GetMapping("/books")
-	public ResponseEntity<List<Book>> getBookList(){ 
-		/*BookList bookList=new BookList();
-		bookList.setBooks(BookService.getBookList());*/
-	    return ResponseEntity.ok(BookService.getBookList());    
+	public ResponseEntity<BookList> getBookList(){ 
+		BookList bookList=new BookList();
+		bookList.setBooks(BookService.getBookList());
+	    return ResponseEntity.ok(bookList);    
 	}
 	@RequestMapping("/books/{id}")
-	public Book getBookById(@PathVariable("id") String id) {
-		Book b= BookService.getBookList().stream().filter(book->id.equals(book.getId())).findAny().orElse(null);
+	public Book getBookById(@PathVariable("id") int id) {
+		Book b= BookService.getBookList().stream().filter(book->id==book.getId()).findAny().orElse(null);
 		return b;
 	}
 }
